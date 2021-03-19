@@ -1,4 +1,4 @@
-#Tekstigeneraattori
+# Tekstigeneraattori
 
 Opinto-ohjelma: tietojenkäsittelytieteen kandidaatti (TKT)
 Kielivalinta: Suomi
