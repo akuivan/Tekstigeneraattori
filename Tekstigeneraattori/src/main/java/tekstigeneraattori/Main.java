@@ -5,11 +5,16 @@ import tekstigeneraattori.domain.Solmu;
 import tekstigeneraattori.ui.TekstigeneraattoriUi;
 
 /**
- * Ohjelman käynnistys
- *
+ * Sovelluksen käynnistys.
  */
 public class Main {
 
+    /**
+     * Metodi käynnistää sovelluksen. Myöhemmin tulee käynnistämään graafisen
+     * käyttöliittymän.
+     *
+     * @param args on Main luokan antama muuttuja.
+     */
     public static void main(String[] args) {
         Trie puu = new Trie();
         puu.lisääMerkit("valo", 3);
