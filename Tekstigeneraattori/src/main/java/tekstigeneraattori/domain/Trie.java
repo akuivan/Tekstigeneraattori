@@ -6,7 +6,7 @@ package tekstigeneraattori.domain;
  */
 public class Trie {
 
-    private Solmu juuri;
+    Solmu juuri;
 
     /**
      * Metodi luo trie -tietorakenteen juurisolmun.

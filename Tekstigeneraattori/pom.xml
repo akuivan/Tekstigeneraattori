@@ -46,8 +46,8 @@
                 <version>0.8.3</version>
                 <configuration>
                     <excludes>
-                        <exclude>Tekstigeneraattori/ui/**/*</exclude>
-                        <exclude>Tekstigeneraattori/Main</exclude>
+                        <exclude>tekstigeneraattori/ui/*</exclude>
+                        <exclude>tekstigeneraattori/Main*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
