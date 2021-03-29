@@ -35,8 +35,5 @@ public class TrieTest {
         assertTrue(puu.juuri.solmut.get("val").frekvenssi == 2);
         assertTrue(puu.juuri.solmut.get("alo").frekvenssi == 2);
     }
-    
-    // Search -metodille ei vielä testiä, sillä kyseinen metodi tulee vielä
-    // mahd. muuttumaan eikä ole vielä käytössä
-
+   
 }

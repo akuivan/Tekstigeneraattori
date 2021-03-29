@@ -43,7 +43,15 @@ public class Trie {
                     juuri.solmut.put(merkit, uusi);
                 }
             } else {
-                juuri.solmut.get(merkit).kasvataFrekvenssiä();
+                Solmu nykyinen = juuri.solmut.get(merkit);
+                nykyinen.kasvataFrekvenssiä();
+                String seuraavaKirjain = String.valueOf(data.charAt(i + k));
+
+                if (nykyinen.solmut.containsKey(seuraavaKirjain)) {
+                    nykyinen.solmut.get(seuraavaKirjain).kasvataFrekvenssiä();
+                } else {
+                    juuri.solmut.get(merkit).solmut.put(seuraavaKirjain, new Solmu());
+                }
             }
         }
     }
@@ -58,13 +66,12 @@ public class Trie {
      *
      * @return solmu jos löytyy, muutoin null.
      */
-    public String haeMerkit(String haettava) {
-        for (String solmu : juuri.solmut.keySet()) {
-            if (solmu.equals(haettava)) {
-                return solmu;
-            }
-        }
-        return null;
-    }
-
+//    public String haeMerkit(String haettava) {
+//        for (String avain : juuri.solmut.keySet()) {
+//            if (avain.equals(haettava)) {
+//                return avain;
+//            }
+//        }
+//        return null;
+//    }
 }
