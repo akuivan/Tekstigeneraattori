@@ -1,5 +1,7 @@
 package tekstigeneraattori.domain;
 
+import java.util.HashMap;
+
 /**
  * Trie luokka pitää sisällään trie-tietorakenteen merkkien tallentamista ja
  * käsittelyä varten.
@@ -45,6 +47,9 @@ public class Trie {
             } else {
                 Solmu nykyinen = juuri.solmut.get(merkit);
                 nykyinen.kasvataFrekvenssiä();
+                if (i + k >= data.length()) {
+                    break;
+                }
                 String seuraavaKirjain = String.valueOf(data.charAt(i + k));
 
                 if (nykyinen.solmut.containsKey(seuraavaKirjain)) {
@@ -53,6 +58,18 @@ public class Trie {
                     juuri.solmut.get(merkit).solmut.put(seuraavaKirjain, new Solmu());
                 }
             }
+        }
+    }
+
+    public void laskeFrekvenssistäTodennäköisyys() {
+        int todnäk;
+
+        for (HashMap.Entry<String, Solmu> en : juuri.solmut.entrySet()) {
+            String avain = en.getKey(); //val
+            Solmu lapsi = en.getValue(); // o
+
+            //VANHEMPI?!
+//            todnäk = lapsi.frekvenssi / vanhempi.frekvenssi;
         }
     }
 

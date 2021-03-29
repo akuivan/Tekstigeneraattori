@@ -17,6 +17,7 @@ public class Main {
      */
     public static void main(String[] args) {
         Trie puu = new Trie();
-        puu.lisääMerkit("valo", 3);
+        puu.lisääMerkit("valovalo", 3);
+//        puu.laskeFrekvenssistäTodennäköisyys();
     }
 }
