@@ -8,8 +8,9 @@ import java.util.HashMap;
  */
 public class Solmu {
 
-    HashMap<String, Solmu> solmut; //voisi tallentaa eriasteen markoveja?
+    HashMap<String, Solmu> solmut;
     Integer frekvenssi;
+    Double todennäköisyys;
 
     /**
      * Metodi luo solmun, joka sisältää tiedon frekvenssistä (kuinka usein
@@ -26,5 +27,14 @@ public class Solmu {
      */
     public void kasvataFrekvenssiä() {
         frekvenssi++;
+    }
+
+    /**
+     * Metodi asettaa solmun todennäköisyys -muuttujaan arvon, joka kertoo
+     * jonkun tietyn kirjaimen todennäköisyyden seurata tiettyä
+     * merkkiä/merkkiyhdistelmiä.
+     */
+    public void setTodennäköisyys(Double todennäköisyys) {
+        this.todennäköisyys = todennäköisyys;
     }
 }
