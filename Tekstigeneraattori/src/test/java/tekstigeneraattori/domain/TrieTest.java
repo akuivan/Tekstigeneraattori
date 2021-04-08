@@ -35,5 +35,17 @@ public class TrieTest {
         assertTrue(puu.juuri.solmut.get("val").frekvenssi == 2);
         assertTrue(puu.juuri.solmut.get("alo").frekvenssi == 2);
     }
-   
+
+    @Test
+    public void lisääMerkitLuoUudenLapsisolmun() {
+        puu.lisääMerkit("valo", 3);
+        puu.lisääMerkit("vala", 3);
+        Solmu vanhempi = puu.juuri.solmut.get("val");
+
+        assertTrue(vanhempi.solmut.containsKey("o"));
+        assertTrue(vanhempi.solmut.containsKey("a"));
+    }
+
+    // täältä puuttuu sanan generoimiseen liittyvien metodien testaus,
+    // sillä nekin ovat vielä vaiheessa.
 }

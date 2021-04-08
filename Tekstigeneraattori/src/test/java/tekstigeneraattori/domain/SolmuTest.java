@@ -30,4 +30,11 @@ public class SolmuTest {
         assertTrue(3 == solmu.frekvenssi);
     }
 
+    @Test
+    public void setTodennäköisyysAsettaaDoubleArvon() {
+        double arvo = 0.2;
+        solmu.setTodennäköisyys(arvo);
+        assertTrue(arvo == solmu.todennäköisyys);
+    }
+
 }
