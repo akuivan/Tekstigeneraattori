@@ -55,12 +55,6 @@ public class TrieTest {
     }
 
     @Test
-    public void luoSanaEiLuoSanaaJosMerkkiyhdistelmiäEiLöydy() {
-        String sana = puu.luoSana(2, 4);
-        assertTrue(sana.isEmpty());
-    }
-
-    @Test
     public void erotusMetodiPalauttaaItseisarvonNegatiivisellaArvoilla() {
         Double erotus = puu.erotus(0.54865, -0.876);
         assertTrue(1.42465 == erotus);
