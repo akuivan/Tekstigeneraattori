@@ -138,7 +138,7 @@ public class Trie {
      * @param merkit on sanan aloittanut merkkiyhdistelmä.
      *
      */
-    private void lisääAloittavaMerkkiyhdistelmäListaan(String merkit) {
+    public void lisääAloittavaMerkkiyhdistelmäListaan(String merkit) {
         if (aloittavatMerkit.contains(merkit)) {
             return;
         } else {
@@ -154,7 +154,7 @@ public class Trie {
      *
      * @return merkkiyhdistelmä, joka on opetusdatassa aloittanut sanan.
      */
-    private String arvoAloittavaMerkkiyhdistelmä(int k) {
+    public String arvoAloittavaMerkkiyhdistelmä(int k) {
         String avain = "";
         while (avain.length() != k) {
             Object[] avaimet = aloittavatMerkit.toArray();
@@ -173,7 +173,7 @@ public class Trie {
      *
      * @return merkkiyhdistelmää seuraava merkki/kirjain.
      */
-    private String seuraavaMerkki(Solmu solmu) {
+    public String seuraavaMerkki(Solmu solmu) {
         double random = Math.random(); // satunnaisluku väliltä 0-1
         // tai
 //        double random = new Random().nextDouble();
@@ -214,7 +214,7 @@ public class Trie {
      *
      * @return satunnaisluvun ja todennäköisyyden erotus itseisarvona.
      */
-    private Double erotus(Double random, Double lapsiSolmunTodennäköisyys) {
+    public Double erotus(Double random, Double lapsiSolmunTodennäköisyys) {
         Double erotus = random - lapsiSolmunTodennäköisyys;
         return erotus > 0 ? erotus : -erotus;
     }
@@ -225,7 +225,7 @@ public class Trie {
      * merkkiä/merkkiyhdistelmää (eli juuresta katsottuna lapsisolmua) , ja
      * tallentaa sen lapsenlapsisolmuun. EDELLEEN HIEMAN KESKEN.
      */
-    private void laskeFrekvenssistäTodennäköisyys() {
+    public void laskeFrekvenssistäTodennäköisyys() {
         double todnäk;
 
         int i = 1;
