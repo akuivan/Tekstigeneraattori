@@ -46,6 +46,24 @@ public class TrieTest {
         assertTrue(vanhempi.solmut.containsKey("a"));
     }
 
-    // täältä puuttuu sanan generoimiseen liittyvien metodien testaus,
-    // sillä nekin ovat vielä vaiheessa.
+    @Test
+    public void luoSanaEiLuoLiianPitkääSanaa() {
+        puu.lisääMerkit("valo", 2);
+        puu.lisääMerkit("vala", 2);
+        String sana = puu.luoSana(2, 4);
+        assertTrue(sana.length() == 4);
+    }
+
+    @Test
+    public void luoSanaEiLuoSanaaJosMerkkiyhdistelmiäEiLöydy() {
+        String sana = puu.luoSana(2, 4);
+        assertTrue(sana.isEmpty());
+    }
+
+    @Test
+    public void erotusMetodiPalauttaaItseisarvonNegatiivisellaArvoilla() {
+        Double erotus = puu.erotus(0.54865, -0.876);
+        assertTrue(1.42465 == erotus);
+    }
+
 }
