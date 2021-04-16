@@ -127,7 +127,7 @@ public class TekstigeneraattoriUi extends Application {
      *
      */
     public void lueTiedosto(File valittu) {
-        try ( BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
+        try (BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
             String rivi;
 
             while ((rivi = lukija.readLine()) != null) {

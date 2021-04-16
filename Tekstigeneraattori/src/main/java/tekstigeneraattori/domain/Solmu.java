@@ -33,6 +33,8 @@ public class Solmu {
      * Metodi asettaa solmun todennäköisyys -muuttujaan arvon, joka kertoo
      * jonkun tietyn kirjaimen todennäköisyyden seurata tiettyä
      * merkkiä/merkkiyhdistelmiä.
+     *
+     * @param todennäköisyys on asetettava arvo.
      */
     public void setTodennäköisyys(Double todennäköisyys) {
         this.todennäköisyys = todennäköisyys;
