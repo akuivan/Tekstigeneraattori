@@ -11,13 +11,15 @@ import java.util.Random;
 public class Trie {
 
     Solmu juuri;
-    ArrayList<String> aloittavatMerkit;
+//    ArrayList<String> aloittavatMerkit;
+    Lista<String> aloittavatMerkit;
 
     /**
      * Metodi luo trie -tietorakenteen juurisolmun.
      */
     public Trie() {
-        aloittavatMerkit = new ArrayList<>();
+//        aloittavatMerkit = new ArrayList<>();
+        aloittavatMerkit = new Lista<>();
         juuri = new Solmu();
     }
 
@@ -142,7 +144,7 @@ public class Trie {
         if (aloittavatMerkit.contains(merkit)) {
             return;
         } else {
-            aloittavatMerkit.add(merkit);
+            aloittavatMerkit.lisaa(merkit);
         }
     }
 
@@ -157,8 +159,16 @@ public class Trie {
     public String arvoAloittavaMerkkiyhdistelmä(int k) {
         String avain = "";
         while (avain.length() != k) {
-            Object[] avaimet = aloittavatMerkit.toArray();
-            Object väliavain = avaimet[new Random().nextInt(avaimet.length)];
+            Object[] avaimet = aloittavatMerkit.arvot;
+//            Object[] avaimet = aloittavatMerkit.toArray(); alkup.
+
+            Object väliavain = null; //alustus
+            // listan koon kasvatus ominaisuuden vuoksi väliavaimeksi
+            // voi osua null -arvo, minkä vuoksi tällainen while -ehto.
+            while (väliavain == null) {
+                väliavain = avaimet[new Random().nextInt(avaimet.length)];
+            }
+//            Object väliavain = avaimet[new Random().nextInt(avaimet.length)]; alkup.
             avain = (String) väliavain;
         }
         return avain;
