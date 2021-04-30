@@ -14,8 +14,8 @@ public class SolmuTest {
     }
 
     @Test
-    public void solmunLuominenAlustaaHashMapinOikein() {
-        assertTrue(solmu.solmut.isEmpty());
+    public void solmunLuominenAlustaaHajautustaulunOikein() {
+        assertTrue(solmu.solmut != null);
     }
 
     @Test

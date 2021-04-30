@@ -16,7 +16,7 @@ public class TrieTest {
 
     @Test
     public void puunLuominenAlustaaJuurisolmun() {
-        assertTrue(puu.juuri.solmut.isEmpty() && puu.juuri.frekvenssi == 1);
+        assertTrue(puu.juuri.solmut != null && puu.juuri.frekvenssi == 1);
     }
 
     @Test

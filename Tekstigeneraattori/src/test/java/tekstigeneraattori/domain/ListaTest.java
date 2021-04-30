@@ -50,7 +50,7 @@ public class ListaTest {
         lista.lisaa("valas");
         lista.lisaa("vakaa");
 
-        assertTrue(lista.arvo(4).equals("vakaa"));
+        assertTrue(lista.getArvo(4).equals("vakaa"));
     }
 
     @Test
@@ -67,6 +67,12 @@ public class ListaTest {
         assertFalse(lista.contains("moi!"));
     }
 
+    @Test
+    public void indeksiEiPlautaIndeksiäJosSitäEiLöydy() {
+        Solmu uus = new Solmu();
+        assertTrue(lista.indeksi(uus) == -1);
+    }
+
     // Poikkeuksien testausta varten
     @Rule
     public final ExpectedException poikkeus = ExpectedException.none();
@@ -80,7 +86,7 @@ public class ListaTest {
         lista.lisaa("vakaa");
 
         poikkeus.expect(ArrayIndexOutOfBoundsException.class);
-        lista.arvo(8);
+        lista.getArvo(8);
     }
 
     @Test
@@ -92,7 +98,7 @@ public class ListaTest {
         lista.lisaa("vakaa");
 
         poikkeus.expect(ArrayIndexOutOfBoundsException.class);
-        lista.arvo(-8);
+        lista.getArvo(-8);
     }
 
 }
