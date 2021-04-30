@@ -48,7 +48,7 @@ public class TekstigeneraattoriUi extends Application {
         // alusta trie -tietorakenne
         trie = new Trie();
 
-        //graafiset komponentit ja niiden toiminta
+        //loput koodista liittyy graafisiin komponentteihin ja niiden toimintaan
         pääIkkuna.setTitle("Sanageneraattori");
 
         FileChooser fileChooser = new FileChooser();
@@ -127,7 +127,7 @@ public class TekstigeneraattoriUi extends Application {
      *
      */
     public void lueTiedosto(File valittu) {
-        try (BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
+        try ( BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
             String rivi;
 
             while ((rivi = lukija.readLine()) != null) {
