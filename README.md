@@ -15,3 +15,4 @@
 [Viikkoraportti 3 ](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/viikkoraportti3.md) <br><br>
 [Viikkoraportti 4 ](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/viikkoraportti4.md) <br><br>
 [Viikkoraportti 5 ](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/viikkoraportti5.md) <br><br>
+[Viikkoraportti 6 ](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/viikkoraportti6.md) <br><br>
