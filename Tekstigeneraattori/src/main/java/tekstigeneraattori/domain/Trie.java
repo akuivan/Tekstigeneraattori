@@ -1,7 +1,5 @@
 package tekstigeneraattori.domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -11,14 +9,14 @@ import java.util.Random;
 public class Trie {
 
     Solmu juuri;
-//    ArrayList<String> aloittavatMerkit;
+//    ArrayList<String> aloittavatMerkit;                                VANHAT POIS
     Lista<String> aloittavatMerkit;
 
     /**
      * Metodi luo trie -tietorakenteen juurisolmun.
      */
     public Trie() {
-//        aloittavatMerkit = new ArrayList<>();
+//        aloittavatMerkit = new ArrayList<>();                                VANHAT POIS
         aloittavatMerkit = new Lista<>();
         juuri = new Solmu();
     }
@@ -50,24 +48,33 @@ public class Trie {
 
             // jos merkkiyhdistelmä on täysin uusi
             if (!juuri.solmut.containsKey(merkit)) {
+//                if (!juuri.solmut.containsKey(merkit)) {                                VANHAT POIS
                 if (i + k >= sana.length()) {
                     // jos sanan merkit loppuivat kesken, lisää viimeiset merkit,
                     // eli solmu, trieen
-                    juuri.solmut.put(merkit, new Solmu());
+                    juuri.solmut.lisää(merkit, new Solmu());
+//                        juuri.solmut.put(merkit, new Solmu());
                     break;
                 } else {
                     //lisää uusi solmu ja sen lapsisolmu, eli 
                     //merkkiyhdistelmälle sitä seuraava merkki
                     String seuraavaKirjain = String.valueOf(sana.charAt(i + k));
                     Solmu uusi = new Solmu();
-                    uusi.solmut.put(seuraavaKirjain, new Solmu());
-                    juuri.solmut.put(merkit, uusi);
+                    uusi.solmut.lisää(seuraavaKirjain, new Solmu());
+//                        uusi.solmut.put(seuraavaKirjain, new Solmu());                                 VANHAT POIS
+
+                    juuri.solmut.lisää(merkit, uusi);
+//                        juuri.solmut.put(merkit, uusi);                                VANHAT POIS
                 }
             } else {
                 // jos merkkiyhdistelmä, eli solmu, löytyy jo ennestään niin 
                 // hae ko. solmu ja kasvata sen frekvenssiä
+
                 Solmu nykyinen = juuri.solmut.get(merkit);
+//                    Solmu nykyinen = juuri.solmut.get(merkit);                                VANHAT POIS
+
                 nykyinen.kasvataFrekvenssiä();
+//                    nykyinen.kasvataFrekvenssiä();                         VANHAT POIS
                 if (i + k >= sana.length()) { // sanan käsittely päättyy
                     break;
                 }
@@ -76,12 +83,15 @@ public class Trie {
 
                 //lisää/päivitä ko. solmun lapsisolmu(ja)
                 if (nykyinen.solmut.containsKey(seuraavaKirjain)) {
+//                if (nykyinen.solmut.containsKey(seuraavaKirjain)) {                         VANHAT POIS
                     // jos lapsisolmu, eli seuraava merkki löytyy jo,
                     // niin kasvatetaan sen frekvenssiä
                     nykyinen.solmut.get(seuraavaKirjain).kasvataFrekvenssiä();
+//                        nykyinen.solmut.get(seuraavaKirjain).kasvataFrekvenssiä();                         VANHAT POIS
                 } else {
                     //lisää uusi lapsisolmu
-                    nykyinen.solmut.put(seuraavaKirjain, new Solmu());
+                    nykyinen.solmut.lisää(seuraavaKirjain, new Solmu());
+//                    nykyinen.solmut.put(seuraavaKirjain, new Solmu());                         VANHAT POIS
                 }
             }
         }
@@ -110,7 +120,8 @@ public class Trie {
         uusi += välisana;
 
         // käydään trie -tietorakennetta läpi
-        for (int i = 0; i < juuri.solmut.size(); i++) {
+        for (int i = 0; i < juuri.solmut.koko(); i++) {
+//            for (int i = 0; i < juuri.solmut.size(); i++) {                     ALKUP POIS
             // jos merkkiyhdistelmä löytyy
             if (juuri.solmut.containsKey(välisana)) {
                 Solmu tarkasteltavaSolmu = juuri.solmut.get(välisana);
@@ -160,7 +171,7 @@ public class Trie {
         String avain = "";
         while (avain.length() != k) {
             Object[] avaimet = aloittavatMerkit.arvot;
-//            Object[] avaimet = aloittavatMerkit.toArray(); alkup.
+//            Object[] avaimet = aloittavatMerkit.toArray();                ALKUP. TÄÄ JOSKUS POIS
 
             Object väliavain = null; //alustus
             // listan koon kasvatus ominaisuuden vuoksi väliavaimeksi
@@ -168,7 +179,7 @@ public class Trie {
             while (väliavain == null) {
                 väliavain = avaimet[new Random().nextInt(avaimet.length)];
             }
-//            Object väliavain = avaimet[new Random().nextInt(avaimet.length)]; alkup.
+//            Object väliavain = avaimet[new Random().nextInt(avaimet.length)]; ALKUP. TÄÄ JOSKUS POIS
             avain = (String) väliavain;
         }
         return avain;
@@ -185,15 +196,19 @@ public class Trie {
      */
     public String seuraavaMerkki(Solmu solmu) {
         double random = Math.random(); // satunnaisluku väliltä 0-1
-        // tai
-//        double random = new Random().nextDouble();
-//        System.out.println(random);
+//        // tai                                                            MITÄ TÄN KAA?
+////        double random = new Random().nextDouble();
+////        System.out.println(random);
         String kirjain = "";
         double lähin = 1.0;
         Solmu lähinSolmu;
 
-        for (HashMap.Entry<String, Solmu> en : solmu.solmut.entrySet()) {
-            Solmu lapsi = en.getValue();
+        for (int i = 0; i < solmu.solmut.koko(); i++) {
+//        for (HashMap.Entry<String, Solmu> en : solmu.solmut.entrySet()) {       ALKUP! POIS
+//            Solmu lapsi = en.getValue();                                        ALKUP! POIS
+            String avain = solmu.solmut.avaimet.getArvo(i);                       //PRINTTAUST VARTEN, POIS
+            Solmu lapsi = solmu.solmut.solmut.getArvo(i);
+
             double erotus = erotus(random, lapsi.todennäköisyys);
 
             if (erotus == lähin) { // jos 50:50 todnäk.
@@ -204,8 +219,9 @@ public class Trie {
             // kuvaava arvo osuu lähemmäksi satunnaislukua
             if (erotus < lähin) {
                 lähin = erotus;
-                lähinSolmu = lapsi;
-                kirjain = en.getKey();
+//    lähinSolmu  = lapsi; TARVITAAAAAAAAAANKO??
+                kirjain = solmu.solmut.avaimet.getArvo(i);
+//                kirjain = en.getKey();                                    ALKUP! POIS
             }
         }
         return kirjain;
@@ -238,18 +254,28 @@ public class Trie {
     public void laskeFrekvenssistäTodennäköisyys() {
         double todnäk;
 
-        int i = 1;
-        for (HashMap.Entry<String, Solmu> en : juuri.solmut.entrySet()) {
-            String avain = en.getKey();
-            Solmu vanhempi = en.getValue();
+        for (int i = 0; i < juuri.solmut.koko(); i++) {
+            String avain = juuri.solmut.avaimet.getArvo(i);
+            Solmu vanhempi = juuri.solmut.solmut.getArvo(i);
 
-            for (Solmu lapsi : vanhempi.solmut.values()) {
+            for (int j = 0; j < vanhempi.solmut.koko(); j++) {
+                Solmu lapsi = vanhempi.solmut.solmut.getArvo(j);
+                String lapsiavain = vanhempi.solmut.avaimet.getArvo(j);    // TÄTÄ EI TULLA TARVITSEMAAN
+
                 todnäk = (double) lapsi.frekvenssi / vanhempi.frekvenssi;
                 lapsi.setTodennäköisyys(todnäk);
-
-                i++;
             }
-            i = 1;
+
         }
+//          VANHAA:                                                               ALKUP! POIS
+//        for (HashMap.Entry<String, Solmu> en : juuri.solmut.entrySet()) {
+//            String avain = en.getKey();
+//            Solmu vanhempi = en.getValue();
+//
+//            for (Solmu lapsi : vanhempi.solmut.values()) {
+//                todnäk = (double) lapsi.frekvenssi / vanhempi.frekvenssi;
+//                lapsi.setTodennäköisyys(todnäk);
+//            }
+//        }
     }
 }

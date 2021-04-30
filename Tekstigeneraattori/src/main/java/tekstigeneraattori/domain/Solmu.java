@@ -8,9 +8,10 @@ import java.util.HashMap;
  */
 public class Solmu {
 
-    HashMap<String, Solmu> solmut;
-    Integer frekvenssi;
-    Double todennäköisyys;
+    Hajautustaulu<String, Solmu> solmut;
+//    HashMap<String, Solmu> solmut;                                VANHAT POIS
+    int frekvenssi;
+    double todennäköisyys;
 
     /**
      * Metodi luo solmun, joka sisältää tiedon frekvenssistä (kuinka usein
@@ -18,7 +19,8 @@ public class Solmu {
      * merkkiyhdistelmästä ja linkki seuraavaan solmuun.
      */
     public Solmu() {
-        solmut = new HashMap<>();
+        solmut = new Hajautustaulu<>();
+//        solmut = new HashMap<>();                                VANHAT POIS
         frekvenssi = 1;
     }
 

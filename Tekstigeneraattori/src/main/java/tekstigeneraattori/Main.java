@@ -1,8 +1,8 @@
 package tekstigeneraattori;
 
+// MUISTA SIIVOTA NÄMÄKIN
 import tekstigeneraattori.domain.Hajautustaulu;
 import tekstigeneraattori.domain.Lista;
-import tekstigeneraattori.domain.Pari;
 import tekstigeneraattori.domain.Trie;
 import tekstigeneraattori.domain.Solmu;
 import tekstigeneraattori.ui.TekstigeneraattoriUi;
@@ -27,7 +27,6 @@ public class Main {
 //     |
 //      --> alo ---> null
 //        Trie puu = new Trie();
-//        puu.lisääMerkit("valo", 2);
 //        puu.lisääMerkit("valo", 3);
 //        puu.lisääMerkit("valo", 4);
 //        puu.lisääMerkit("joku", 2);
@@ -40,13 +39,13 @@ public class Main {
 //        puu.lisääMerkit("valaa", 3);
 //        puu.lisääMerkit("valaa", 4);
 //
-//        System.out.println(puu.luoSana(2, 4));
-//       
+//        System.out.println(puu.luoSana(2, 6));
+//
 // Projektista puuttuu: 
-// -refaktorointi
-//  omat toteutukset:
-//  - hashmap
-//  - arraylist... (tarvii myös toArray -metodin)
-//  - Random
+// -refaktorointi (tiedoston lukeminen omaan luokkaan ja ylimäär. kommenttien
+// poisto YM.)
+//  - testien päivitys
+//  -suorituskykytestaus
+// - dokumentointi
     }
 }

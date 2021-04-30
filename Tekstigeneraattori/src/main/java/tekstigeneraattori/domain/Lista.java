@@ -51,7 +51,7 @@ public class Lista<T> {
      *
      * @return löytynyt arvo.
      */
-    public T arvo(int indeksi) {
+    public T getArvo(int indeksi) {
         if (indeksi < 0 || indeksi >= this.koko) {
             throw new ArrayIndexOutOfBoundsException("Indeksi " + indeksi + " alueen [0, " + this.koko + "[ ulkopuolella.");
         }
@@ -79,11 +79,28 @@ public class Lista<T> {
         Boolean löytyy = false;
 
         for (int i = 0; i < this.arvot.length; i++) {
-            if (arvo == this.arvot[i]) {
+            if (arvo.equals(this.arvot[i])) {
                 löytyy = true;
                 break;
             }
         }
         return löytyy;
     }
+
+    /**
+     * Metodi palauttaa indeksin, josta tietty arvo löytyy.
+     *
+     * @param arvo on se, mitä listasta haetaan.
+     *
+     * @return jos arvo löytyy, metodi palauttaa indeksin. Muutoin -1.
+     */
+    public int indeksi(T arvo) {
+        for (int i = 0; i < this.arvot.length; i++) {
+            if (arvo.equals(this.arvot[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 }
