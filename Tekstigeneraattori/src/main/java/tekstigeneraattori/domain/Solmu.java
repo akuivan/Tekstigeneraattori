@@ -1,7 +1,5 @@
 package tekstigeneraattori.domain;
 
-import java.util.HashMap;
-
 /**
  * Luo Solmu olion.
  *
@@ -9,7 +7,6 @@ import java.util.HashMap;
 public class Solmu {
 
     Hajautustaulu<String, Solmu> solmut;
-//    HashMap<String, Solmu> solmut;                                VANHAT POIS
     int frekvenssi;
     double todennäköisyys;
 
@@ -20,7 +17,6 @@ public class Solmu {
      */
     public Solmu() {
         solmut = new Hajautustaulu<>();
-//        solmut = new HashMap<>();                                VANHAT POIS
         frekvenssi = 1;
     }
 

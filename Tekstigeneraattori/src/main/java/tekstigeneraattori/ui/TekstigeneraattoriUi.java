@@ -17,7 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import tekstigeneraattori.domain.Trie;
+import tekstigeneraattori.domain.Markov;
 
 /**
  * Graafinen käyttöliittymä ja sen käynnistys.
@@ -26,7 +26,7 @@ import tekstigeneraattori.domain.Trie;
 public class TekstigeneraattoriUi extends Application {
 
     VBox vBox;
-    Trie trie;
+    Markov markov;
 
     /**
      * Metodi käynnistää graafisen käyttöliittymän.
@@ -45,8 +45,10 @@ public class TekstigeneraattoriUi extends Application {
      */
     @Override
     public void start(Stage pääIkkuna) throws Exception {
-        // alusta trie -tietorakenne
-        trie = new Trie();
+        // alusta markovin ketju (ja sitä kautta myös trie -tietorakenne)
+        // sekä lukija tiedostojen käsittelyä varten
+        markov = new Markov();
+        TiedostonLukija lukija = new TiedostonLukija(markov);
 
         //loput koodista liittyy graafisiin komponentteihin ja niiden toimintaan
         pääIkkuna.setTitle("Sanageneraattori");
@@ -59,7 +61,7 @@ public class TekstigeneraattoriUi extends Application {
         Button liitäTiedostoNappi = new Button("Valitse txt.tiedosto");
         liitäTiedostoNappi.setOnAction(e -> {
             File valittuTiedosto = fileChooser.showOpenDialog(pääIkkuna);
-            lueTiedosto(valittuTiedosto);
+            lukija.lueTiedosto(valittuTiedosto);
         });
 
         VBox vbox = new VBox();
@@ -105,12 +107,12 @@ public class TekstigeneraattoriUi extends Application {
         luoSanaNappi.setOnAction(e -> {
             int pituus = Integer.valueOf(tekstikenttäPituudelle.getText());
             int k = valittuMarkovinAste(checkBox1, checkBox2, checkBox3);
-            tekstikenttäUudelleSanalle.setText(trie.luoSana(k, pituus));
+            tekstikenttäUudelleSanalle.setText(markov.luoSana(k, pituus));
 
         });
 
         this.vBox = new VBox(liitäTiedostoNappi, generoiSanaNappi);
-        Scene aloitusNäkymä = new Scene(vBox, 50, 50);
+        Scene aloitusNäkymä = new Scene(vBox, 150, 150);
 
         palaaTakaisin.setOnAction(e -> {
             pääIkkuna.setScene(aloitusNäkymä);
@@ -118,26 +120,6 @@ public class TekstigeneraattoriUi extends Application {
 
         pääIkkuna.setScene(aloitusNäkymä);
         pääIkkuna.show();
-    }
-
-    /**
-     * Metodi lukee käyttäjän avamaan tekstitiedoston.
-     *
-     * @param valittu on valittu txt.tiedosto.
-     *
-     */
-    public void lueTiedosto(File valittu) {
-        try ( BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
-            String rivi;
-
-            while ((rivi = lukija.readLine()) != null) {
-                //tallenna 2,3 ja 4 -asteen markovit trie -tietorakenteesen
-                tallennaMarkovit(rivi);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -166,42 +148,4 @@ public class TekstigeneraattoriUi extends Application {
         }
         return k;
     }
-
-    /**
-     * Metodi tallentaa rivi ja sana kerrallaan merkkejä ja merkkiyhdistelmiä
-     * trieen Markovin asteilla 2, 3 ja 4.
-     *
-     * @param rivi on luettu txt.tiedoston rivi.
-     */
-    private void tallennaMarkovit(String rivi) {
-        //jätä huomiotta välilyönnit ym. merkit ja muuta isot kirjaimet pieniksi
-        String[] rivit = rivi.toLowerCase().split("\\W+");
-        int indeksi = 0;
-
-        while (indeksi < rivit.length) {
-            String sana = rivit[indeksi];
-            // ja jos sana onkin rivinvaihto tai numeerinen
-            if (sana.isEmpty() || onNumero(sana)) {
-                indeksi++;
-                continue; // sitä ei tallenneta.
-            }
-            // muutoin lisää ko. sana trie -rakenteeesen
-            trie.lisääMerkit(sana, 2);
-            trie.lisääMerkit(sana, 3);
-            trie.lisääMerkit(sana, 4);
-            indeksi++;
-        }
-    }
-
-    /**
-     * Metodi tarkistaa onko sana sittenkin numero.
-     *
-     * @param sana on tarkistettava sana.
-     *
-     * @return jos sana on numero, palautuu true. Muutoin false.
-     */
-    private static boolean onNumero(String sana) {
-        return sana.matches("-?\\d+(\\.\\d+)?");
-    }
-
 }
