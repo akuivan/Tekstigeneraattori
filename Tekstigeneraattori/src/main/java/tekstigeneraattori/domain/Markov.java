@@ -242,7 +242,6 @@ public class Markov {
                 todnäk = (double) lapsi.frekvenssi / vanhempi.frekvenssi;
                 lapsi.setTodennäköisyys(todnäk);
             }
-
         }
     }
 

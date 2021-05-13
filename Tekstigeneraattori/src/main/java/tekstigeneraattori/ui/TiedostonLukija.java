@@ -32,7 +32,7 @@ public class TiedostonLukija {
      *
      */
     public void lueTiedosto(File valittu) {
-        try (BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
+        try ( BufferedReader lukija = new BufferedReader(new FileReader(valittu))) {
             String rivi;
 
             while ((rivi = lukija.readLine()) != null) {
@@ -63,7 +63,7 @@ public class TiedostonLukija {
                 indeksi++;
                 continue; // sitä ei tallenneta.
             }
-            // muutoin lisää ko. sana trie -rakenteeesen
+            // muutoin lisää ko. sana Markovin trie -rakenteeesen
             markov.lisääMerkit(sana, 2);
             markov.lisääMerkit(sana, 3);
             markov.lisääMerkit(sana, 4);
