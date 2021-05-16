@@ -2,10 +2,10 @@
 
 ### Miten ohjelma suoritetaan, miten eri toiminnallisuuksia käytetään ja minkä muotoisia syötteitä ohjelma hyväksyy
 
-Lataa tiedosto Tekstigeneraattori.jar.
+Lataa tiedosto [Tekstigeneraattori.jar](https://github.com/akuivan/Tekstigeneraattori/releases/tag/v1.0) . <br>
 
-Aloita ensin sovelluksen käyttö lisäämällä sille opetusdataa klikkaamalla painiketta "valitse txt.tiedosto". Tämä avaa valikon, josta voit valita yhden haluamasi txt.tiedoston. Kun olet lisännyt tiedoston,
- voit halutessasi kasvattaa opetusdataa jatkamalla tiedostojen vaitsemista em. painikkeesta tai vaihtoehtoisesti lisätä opetusdataa myöhemmin. <br>
+Aloita ensin sovelluksen käyttö lisäämällä sille opetusdataa klikkaamalla painiketta "valitse txt.tiedosto". Tämä avaa valikon, josta voit valita yhden haluamasi txt.tiedoston. Hakemistoon "Tekstigeneraattori/src/txt.resources" on tallennettuna valmiiksi eri 
+kokoisia txt.tiedostoja, joita voi halutessaan tässä hyödyntää. Kun olet lisännyt tiedoston, voit halutessasi kasvattaa opetusdataa jatkamalla tiedostojen vaitsemista em. painikkeesta tai vaihtoehtoisesti lisätä opetusdataa myöhemmin. <br>
 
 Tämän jälkeen voit siirtyä sanojen generoimiseen klikkaamalla painiketta "Generoi sana". Valitessa tai vaihtaessa Markovin astetta laita/pidä rasti vain yhdessä haluamassasi Markovin astetta vastaavassa ruudussa.
  Generoitavan sanan pituutta voi vaihtaa kirjoittamalla tekstikenttään numeron, joka vastaa halutun generoidun sanan pituutta. Painiketta "Luo sana" voi näiden valintojen jälkeen klikkailla niin monta kertaa 
