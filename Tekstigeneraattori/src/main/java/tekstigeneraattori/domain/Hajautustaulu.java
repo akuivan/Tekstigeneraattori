@@ -1,7 +1,7 @@
 package tekstigeneraattori.domain;
 
 /**
- * Luokka on projektiin kustomoitu HashMapin virkaa toimittava tietorakenne.
+ * Luokka on projektiin kustomoitu HashMapin virkaa toimittava luokka.
  */
 public class Hajautustaulu<String, Solmu> {
 
