@@ -2,11 +2,13 @@
 
 ### Dokumentaatio
 
-[Määrittelydokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/maarittelydokumentti.md) <br><br>
+[Määrittelydokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/maarittelydokumentti.md) <br>
 
-[Toteutusdokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/toteutusdokumentti.md) <br><br>
+[Toteutusdokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/toteutusdokumentti.md) <br>
 
-[Testausdokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/testausdokumentti.md) <br><br>
+[Testausdokumentti](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/testausdokumentti.md) <br>
+
+[Käyttöohje](https://github.com/akuivan/Tekstigeneraattori/blob/main/dokumentaatio/kayttoohje.md) <br>
 
 ### Viikkoraportit
 
